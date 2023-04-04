@@ -36,3 +36,19 @@ export function cryptoNumberFormatter(number: number, digits: number) {
     ? (number / item.value).toFixed(digits).replace(rx, "$1") + item.symbol
     : "0";
 }
+export async function fetchCoinCapCryptoData(limit: number, offset: number) {
+  const options = {
+    method: "GET",
+
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.COINCAP_PRIVATE_API_KEY}`,
+    },
+  };
+  const res = await fetch(
+    `https://api.coincap.io/v2/assets?limit=${limit}&offset=${offset}`,
+    options
+  );
+  const data = await res.json();
+  return data.data;
+}

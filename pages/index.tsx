@@ -3,18 +3,10 @@ import { InferGetServerSidePropsType } from "next";
 import CryptoTable from "../components/CryptoTable";
 import Hero from "../components/Hero";
 import { useState } from "react";
+import { fetchCoinCapCryptoData } from "../utils/crypto";
 
 export async function getServerSideProps() {
-  const res = await fetch(
-    "https://api.coincap.io/v2/assets?limit=25&offset=0",
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.COINCAP_PRIVATE_API_KEY}`,
-      },
-    }
-  );
-  const data = await res.json();
-  const initialCryptoData = data.data;
+  const initialCryptoData = await fetchCoinCapCryptoData(25, 0);
 
   return { props: { initialCryptoData } };
 }

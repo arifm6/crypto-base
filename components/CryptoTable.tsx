@@ -12,19 +12,7 @@ import {
   roundCryptoPercentage,
   roundCryptoPrice,
 } from "../utils/crypto";
-type Coin = {
-  id: string;
-  name: string;
-  rank: string;
-  priceUsd: string;
-  changePercent24Hr: string;
-  volumeUsd24Hr: string;
-  marketCapUsd: string;
-  symbol: string;
-
-  [others: string]: any;
-};
-
+import { Coin } from "../types/Coin";
 type Props = {
   cryptoData: Array<Coin>;
   setCryptoData: Dispatch<any>;
@@ -63,32 +51,15 @@ export default function CryptoTable({ cryptoData, setCryptoData }: Props) {
   const addDefaultSrc = (event: any) => {
     event.target.src = "./crypto-icon.png";
   };
+
   return (
     <div className="max-w-7xl mx-auto space-y-2">
-      <h1 className="text-3xl">Today's Cryptocurrency Prices</h1>
+      <h1 className="text-3xl ml-4 md:ml-0">Today's Cryptocurrency Prices</h1>
       <div className="overflow-x-auto w-full">
         <table className="table w-full table-zebra">
           <thead>
             <tr>
-              <th className="">
-                <button
-                  className="flex items-center"
-                  onClick={() => {
-                    sortByInt("rank");
-                  }}
-                >
-                  <span className="font-light text-xl">#</span>
-                  <span className="text-md">
-                    {sortBy === "ascending rank" ? (
-                      <TiArrowSortedUp />
-                    ) : sortBy === "descending rank" ? (
-                      <TiArrowSortedDown />
-                    ) : (
-                      <TiArrowUnsorted />
-                    )}
-                  </span>
-                </button>
-              </th>
+              <th></th>
 
               <th>
                 <button
@@ -126,9 +97,9 @@ export default function CryptoTable({ cryptoData, setCryptoData }: Props) {
                   <td className="flex items-center  ">
                     <img
                       src={`https://assets.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`}
-                      onError={(e) => addDefaultSrc(e)}
                       alt={coin.id}
                       className="max-w-[2rem] h-auto mr-2 "
+                      onError={addDefaultSrc}
                     />
 
                     {coin.name}

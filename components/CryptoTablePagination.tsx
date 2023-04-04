@@ -1,5 +1,6 @@
 import React, { Dispatch, useMemo, useState } from "react";
 import ReactPaginate from "react-paginate";
+import { fetchCoinCapCryptoData } from "../utils/crypto";
 
 type Props = {
   numberOfPages: number;
@@ -34,16 +35,8 @@ export default function CryptoTablePagination({
   };
   const handlePageClick = async (page: number) => {
     updatePaginationRange(page);
-    const res = await fetch(
-      `https://api.coincap.io/v2/assets?limit=25&offset=${(page - 1) * offset}`,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.COINCAP_PRIVATE_API_KEY}`,
-        },
-      }
-    );
-    const { data } = await res.json();
-    setCryptoData(data);
+    const dummyData = await fetchCoinCapCryptoData(25, 25 * (page - 1));
+    setCryptoData(dummyData);
   };
 
   return (
