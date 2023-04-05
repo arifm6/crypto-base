@@ -2,14 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+::before,
+::after,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 @layer {
   .section {
     @apply max-w-7xl mx-auto bg-red-400;
   }
   .pagination {
     @apply flex justify-center cursor-pointer border-2 border-red-400;
-  }
-  .pagination a {
-    @apply p-[10px] rounded-[5px] border border-black;
   }
 }

@@ -1,4 +1,10 @@
 /** @type {import('tailwindcss').Config} */
+const halloween = require("daisyui/src/colors/themes")[
+  "[data-theme=halloween]"
+];
+const bumblebee = require("daisyui/src/colors/themes")[
+  "[data-theme=bumblebee]"
+];
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
@@ -14,7 +20,21 @@ module.exports = {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["fantasy", "halloween"],
+    themes: [
+      {
+        bumblebee: {
+          ...bumblebee,
+          success: "#228B22",
+          error: "#FF0000",
+        },
+      },
+      {
+        halloween: {
+          ...halloween,
+          success: halloween.accent,
+        },
+      },
+    ],
     darkTheme: "halloween",
   },
 };

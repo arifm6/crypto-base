@@ -4,9 +4,8 @@ import {
   TiArrowSortedDown,
   TiArrowUnsorted,
 } from "react-icons/ti";
-import ReactPaginate from "react-paginate";
+import { IoIosStar } from "react-icons/Io";
 import CryptoTablePagination from "./CryptoTablePagination";
-import Image from "next/image";
 import {
   cryptoNumberFormatter,
   roundCryptoPercentage,
@@ -53,78 +52,86 @@ export default function CryptoTable({ cryptoData, setCryptoData }: Props) {
   };
 
   return (
-    <div className="max-w-7xl mx-auto space-y-2">
-      <h1 className="text-3xl ml-4 md:ml-0">Today's Cryptocurrency Prices</h1>
-      <div className="overflow-x-auto w-full">
-        <table className="table w-full table-zebra">
-          <thead>
-            <tr>
-              <th></th>
+    <>
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-3xl ml-4 md:ml-0">Today's Cryptocurrency Prices</h1>
+        <div className="overflow-x-auto">
+          <table className="table w-full table-zebra ">
+            <thead>
+              <tr>
+                <th></th>
+                <th>#</th>
+                <th>
+                  <button
+                    className="flex items-center"
+                    onClick={() => sortByStr("name")}
+                  >
+                    Name
+                    <span className="text-md">
+                      {sortBy === "ascending name" ? (
+                        <TiArrowSortedUp />
+                      ) : sortBy === "descending name" ? (
+                        <TiArrowSortedDown />
+                      ) : (
+                        <TiArrowUnsorted />
+                      )}
+                    </span>
+                  </button>
+                </th>
+                <th className="">Price</th>
+                <th className="">24H Change</th>
+                <th className="">24H Volume</th>
+                <th className="">Market Cap</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cryptoData.map((coin: Coin) => {
+                const rocColour =
+                  parseFloat(coin.changePercent24Hr) > 0
+                    ? "text-success"
+                    : "text-error";
+                return (
+                  <tr key={coin.id}>
+                    <td>
+                      <IoIosStar />
+                    </td>
+                    <td>{coin.rank}</td>
 
-              <th>
-                <button
-                  className="flex items-center"
-                  onClick={() => sortByStr("name")}
-                >
-                  Name
-                  <span className="text-md">
-                    {sortBy === "ascending name" ? (
-                      <TiArrowSortedUp />
-                    ) : sortBy === "descending name" ? (
-                      <TiArrowSortedDown />
-                    ) : (
-                      <TiArrowUnsorted />
-                    )}
-                  </span>
-                </button>
-              </th>
-              <th className="">Price</th>
-              <th className="">24H Change</th>
-              <th className="">24H Volume</th>
-              <th className="">Market Cap</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cryptoData.map((coin: Coin) => {
-              const rocColour =
-                parseFloat(coin.changePercent24Hr) > 0
-                  ? "text-[#20BCA4]"
-                  : "text-[#D9475A]";
-              return (
-                <tr key={coin.id}>
-                  <td>{coin.rank}</td>
+                    <td className="flex items-center  ">
+                      <img
+                        src={`https://assets.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`}
+                        alt={coin.id}
+                        className="max-w-[2rem] h-auto mr-2 "
+                        onError={addDefaultSrc}
+                      />
 
-                  <td className="flex items-center  ">
-                    <img
-                      src={`https://assets.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`}
-                      alt={coin.id}
-                      className="max-w-[2rem] h-auto mr-2 "
-                      onError={addDefaultSrc}
-                    />
-
-                    {coin.name}
-                  </td>
-                  <td>${roundCryptoPrice(parseFloat(coin.priceUsd))}</td>
-                  <td className={rocColour}>
-                    {roundCryptoPercentage(parseFloat(coin.changePercent24Hr))}%
-                  </td>
-                  <td>
-                    {cryptoNumberFormatter(parseFloat(coin.volumeUsd24Hr), 2)}
-                  </td>
-                  <td>
-                    {cryptoNumberFormatter(parseFloat(coin.marketCapUsd), 2)}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                      {coin.name}
+                    </td>
+                    <td>${roundCryptoPrice(parseFloat(coin.priceUsd))}</td>
+                    <td className={`${rocColour} font-bold`}>
+                      {roundCryptoPercentage(
+                        parseFloat(coin.changePercent24Hr)
+                      )}
+                      %
+                    </td>
+                    <td>
+                      {cryptoNumberFormatter(parseFloat(coin.volumeUsd24Hr), 2)}
+                    </td>
+                    <td>
+                      {cryptoNumberFormatter(parseFloat(coin.marketCapUsd), 2)}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
         <CryptoTablePagination
           setCryptoData={setCryptoData}
           offset={25}
           numberOfPages={30}
         />
       </div>
-    </div>
+    </>
   );
 }

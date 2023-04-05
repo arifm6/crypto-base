@@ -1,6 +1,10 @@
 import React, { Dispatch, useMemo, useState } from "react";
-import ReactPaginate from "react-paginate";
 import { fetchCoinCapCryptoData } from "../utils/crypto";
+import {
+  MdOutlineKeyboardArrowLeft,
+  MdOutlineKeyboardArrowRight,
+} from "react-icons/md";
+import ReactPaginate from "react-paginate";
 
 type Props = {
   numberOfPages: number;
@@ -11,61 +15,40 @@ type Props = {
 export default function CryptoTablePagination({
   setCryptoData,
   numberOfPages,
-  offset,
 }: Props) {
-  const [activePage, setActivePage] = useState(1);
-  const [paginationRange, setPaginationRange] = useState([1, 2, 3, 4, 5]);
-  const updatePaginationRange = (page: number) => {
-    const temp = [];
-    if (page <= 3) {
-      for (let i = 1; i < 6; i++) {
-        temp.push(i);
-      }
-    } else if (page >= 28) {
-      for (let i = 26; i < numberOfPages + 1; i++) {
-        temp.push(i);
-      }
-    } else {
-      for (let i = page - 2; i < page + 3; i++) {
-        temp.push(i);
-      }
-    }
-    setActivePage(page);
-    setPaginationRange([...temp]);
-  };
-  const handlePageClick = async (page: number) => {
-    updatePaginationRange(page);
-    const dummyData = await fetchCoinCapCryptoData(25, 25 * (page - 1));
+  const [currentPage, setCurrentPage] = useState(0);
+  const paginationRage = useMemo(() => {
+    //logic here
+  }, []);
+  const handlePageClick = async (pageNumber: { selected: number }) => {
+    const dummyData = await fetchCoinCapCryptoData(
+      25,
+      25 * pageNumber.selected
+    );
     setCryptoData(dummyData);
   };
 
   return (
-    <>
-      <div className="btn-group justify-center flex">
-        <button
-          className="btn rounded-l-2 rounded-r-none"
-          onClick={() => handlePageClick(1)}
-        >
-          First Page
-        </button>
-        {paginationRange.map((page) => {
-          return (
-            <button
-              key={page}
-              className={`btn ${page === activePage && "btn-active"}`}
-              onClick={() => handlePageClick(page)}
-            >
-              {page}
-            </button>
-          );
-        })}
-        <button
-          className="btn rounded-l-none rounded-r-2"
-          onClick={() => handlePageClick(numberOfPages)}
-        >
-          Last Page
-        </button>
-      </div>
-    </>
+    <div className="flex justify-between overflow-scroll ">
+      <div></div>
+      <ReactPaginate
+        pageCount={numberOfPages}
+        marginPagesDisplayed={1}
+        pageRangeDisplayed={3}
+        className="btn-group flex"
+        onPageChange={handlePageClick}
+        pageLinkClassName="btn btn-sm md:btn-lg rounded-none "
+        breakLinkClassName="btn btn-sm md:btn-lg rounded-none"
+        nextLinkClassName="btn btn-sm md:btn-lg rounded-none"
+        previousLinkClassName="btn btn-sm md:btn-lg rounded-none"
+        activeClassName="[&>*]:btn-active"
+        disabledLinkClassName="btn-disabled"
+        breakLabel={"..."}
+        previousLabel={
+          <MdOutlineKeyboardArrowLeft className="text-xl md:text-2xl font-semibold" />
+        }
+        nextLabel={<MdOutlineKeyboardArrowRight />}
+      />
+    </div>
   );
 }
