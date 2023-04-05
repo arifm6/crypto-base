@@ -1,5 +1,5 @@
 import React, { Dispatch, useMemo, useState } from "react";
-import { fetchCoinCapCryptoData } from "../utils/crypto";
+import { fetchCoinCapCryptoData } from "../../utils/crypto";
 import {
   MdOutlineKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,

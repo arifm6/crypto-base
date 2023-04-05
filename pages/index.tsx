@@ -1,28 +1,30 @@
-import Head from "next/head";
-import { InferGetServerSidePropsType } from "next";
-import CryptoTable from "../components/CryptoTable";
-import Hero from "../components/Hero";
-import { useState } from "react";
+import { InferGetServerSidePropsType, InferGetStaticPropsType } from "next";
+import Link from "next/link";
+import React from "react";
 import { fetchCoinCapCryptoData } from "../utils/crypto";
+import Head from "next/head";
+import Navbar from "../components/Home/Navbar";
+import CryptoTable from "../components/Home/CryptoTable";
 
-export async function getServerSideProps() {
-  const initialCryptoData = await fetchCoinCapCryptoData(25, 0);
+type Props = {};
 
-  return { props: { initialCryptoData } };
+export async function getStaticProps() {
+  const coincapCryptoData = await fetchCoinCapCryptoData(5, 0);
+
+  return { props: { coincapCryptoData } };
 }
 
 export default function Home({
-  initialCryptoData,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const [cryptoData, setCryptoData] = useState(initialCryptoData);
+  coincapCryptoData,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div>
       <Head>
         <title>CryptoBase</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/crypto-icon.png" />
       </Head>
-      <Hero />
-      {<CryptoTable cryptoData={cryptoData} setCryptoData={setCryptoData} />}
+      <Navbar />
+      <CryptoTable coincapCryptoData={coincapCryptoData} />
     </div>
   );
 }

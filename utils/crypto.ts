@@ -15,6 +15,10 @@ export function roundCryptoPercentage(percentage: number) {
   return Math.round((percentage + Number.EPSILON) * 100) / 100;
 }
 
+export function currencyFormat(num: number) {
+  return "$" + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+}
+
 export function cryptoNumberFormatter(number: number, digits: number) {
   const lookup = [
     { value: 1, symbol: "" },
@@ -48,6 +52,14 @@ export async function fetchCoinCapCryptoData(limit: number, offset: number) {
   const res = await fetch(
     `https://api.coincap.io/v2/assets?limit=${limit}&offset=${offset}`,
     options
+  );
+  const data = await res.json();
+  return data.data;
+}
+
+export async function fetchCoinMarketCapData() {
+  const res = await fetch(
+    `https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest?CMC_PRO_API_KEY=${process.env.COINMARKETCAP_PRIVATE_API_KEY}`
   );
   const data = await res.json();
   return data.data;

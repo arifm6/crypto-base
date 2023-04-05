@@ -10,8 +10,8 @@ import {
   cryptoNumberFormatter,
   roundCryptoPercentage,
   roundCryptoPrice,
-} from "../utils/crypto";
-import { Coin } from "../types/Coin";
+} from "../../utils/crypto";
+import { Coin } from "../../types/Coin";
 type Props = {
   cryptoData: Array<Coin>;
   setCryptoData: Dispatch<any>;
@@ -59,7 +59,6 @@ export default function CryptoTable({ cryptoData, setCryptoData }: Props) {
           <table className="table w-full table-zebra ">
             <thead>
               <tr>
-                <th></th>
                 <th>#</th>
                 <th>
                   <button
@@ -92,10 +91,7 @@ export default function CryptoTable({ cryptoData, setCryptoData }: Props) {
                     : "text-error";
                 return (
                   <tr key={coin.id}>
-                    <td>
-                      <IoIosStar />
-                    </td>
-                    <td>{coin.rank}</td>
+                    <th>{coin.rank}</th>
 
                     <td className="flex items-center  ">
                       <img
@@ -109,6 +105,7 @@ export default function CryptoTable({ cryptoData, setCryptoData }: Props) {
                     </td>
                     <td>${roundCryptoPrice(parseFloat(coin.priceUsd))}</td>
                     <td className={`${rocColour} font-bold`}>
+                      {parseFloat(coin.changePercent24Hr) > 0 && "+"}
                       {roundCryptoPercentage(
                         parseFloat(coin.changePercent24Hr)
                       )}
