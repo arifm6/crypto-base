@@ -4,7 +4,7 @@ import {
   TiArrowSortedDown,
   TiArrowUnsorted,
 } from "react-icons/ti";
-import { IoIosStar } from "react-icons/Io";
+import { IoIosStar } from "react-icons/io";
 import CryptoTablePagination from "./CryptoTablePagination";
 import {
   cryptoNumberFormatter,
