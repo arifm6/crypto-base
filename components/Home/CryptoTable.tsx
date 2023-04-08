@@ -1,22 +1,16 @@
 import React from "react";
 import { Coin } from "../../types/Coin";
-import {
-  cryptoNumberFormatter,
-  currencyFormat,
-  roundCryptoPercentage,
-  roundCryptoPrice,
-} from "../../utils/crypto";
-import CryptoChart from "../CryptoChart";
+import { currencyFormat, roundCryptoPercentage } from "../../utils/crypto";
 
 type Props = {
-  coincapCryptoData: Array<Coin>;
+  rankedCryptoData: Array<Coin>;
 };
 
-export default function CryptoTable({ coincapCryptoData }: Props) {
+export default function CryptoTable({ rankedCryptoData }: Props) {
   return (
     <div className="px-3 md:px-12  ">
       <div className="max-w-7xl mx-auto ">
-        {coincapCryptoData.map((coin) => {
+        {rankedCryptoData.map((coin) => {
           const rocColour =
             parseFloat(coin.changePercent24Hr) > 0 ? "success" : "error";
 
@@ -42,7 +36,10 @@ export default function CryptoTable({ coincapCryptoData }: Props) {
                 {currencyFormat(parseFloat(coin.marketCapUsd))}
               </p>
               <div className="w-1/5 hidden md:block">
-                <CryptoChart />
+                <img
+                  src={`https://graphsv2.coinpaprika.com/currency/chart/${coin.symbol}-${coin.id}/7d/chart.svg`}
+                  alt=""
+                />{" "}
               </div>
               <button className={`btn btn-primary`}>Trade</button>
             </div>

@@ -1,5 +1,5 @@
 import React, { Dispatch, useMemo, useState } from "react";
-import { fetchCoinCapCryptoData } from "../../utils/crypto";
+import { fetchBasicCryptoData } from "../../utils/crypto";
 import {
   MdOutlineKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
@@ -21,10 +21,7 @@ export default function CryptoTablePagination({
     //logic here
   }, []);
   const handlePageClick = async (pageNumber: { selected: number }) => {
-    const dummyData = await fetchCoinCapCryptoData(
-      25,
-      25 * pageNumber.selected
-    );
+    const dummyData = await fetchBasicCryptoData(25, 25 * pageNumber.selected);
     setCryptoData(dummyData);
   };
 

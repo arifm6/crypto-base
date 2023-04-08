@@ -40,7 +40,7 @@ export function cryptoNumberFormatter(number: number, digits: number) {
     ? (number / item.value).toFixed(digits).replace(rx, "$1") + item.symbol
     : "0";
 }
-export async function fetchCoinCapCryptoData(limit: number, offset: number) {
+export async function fetchBasicCryptoData(limit: number, offset: number) {
   const options = {
     method: "GET",
 
@@ -57,7 +57,7 @@ export async function fetchCoinCapCryptoData(limit: number, offset: number) {
   return data.data;
 }
 //gives global data
-export async function fetchCoinMarketCapData() {
+export async function fetchCryptoOverviewData() {
   const res = await fetch(
     `https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest?CMC_PRO_API_KEY=${process.env.COINMARKETCAP_PRIVATE_API_KEY}`
   );
@@ -70,7 +70,7 @@ export async function fetchTrendingCryptoData() {
   const data = await res.json();
   return data.coins;
 }
-//https://api.coinpaprika.com/v1/global coinpaprika for new last api (other than coingecko )
+//https://api.coinpaprika.com/v1/global coinpaprika for new last api (other than coingecko ) coinpap for historical good
 //https://api.coinpaprika.com/
 
 export async function fetchHistoricalCryptoData(
@@ -78,18 +78,10 @@ export async function fetchHistoricalCryptoData(
   days: string,
   currency = "usd"
 ) {
-  const options = {
-    method: "GET",
-
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.COINCAP_PRIVATE_API_KEY}`,
-    },
-  };
-
   const res = await fetch(
     `https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=${currency}&days=${days}`
   );
   const data = await res.json();
+  //now clean the data
   return data;
 }

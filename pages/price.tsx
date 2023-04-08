@@ -3,22 +3,18 @@ import { InferGetServerSidePropsType } from "next";
 import CryptoTable from "../components/Price/CryptoTable";
 import Hero from "../components/Price/Hero";
 import { useState } from "react";
-import {
-  fetchCoinCapCryptoData,
-  fetchCoinMarketCapData,
-} from "../utils/crypto";
+import { fetchBasicCryptoData, fetchCryptoOverviewData } from "../utils/crypto";
 
 export async function getServerSideProps() {
-  const coincapCryptoData = await fetchCoinCapCryptoData(25, 0);
-  const coinmarketcapData = await fetchCoinMarketCapData();
+  const basicCryptoData = await fetchBasicCryptoData(25, 0);
+  const cryptoOverviewData = await fetchCryptoOverviewData();
   //NOTE there is no safety check... assuming that it will always return a result
-  return { props: { coincapCryptoData, coinmarketcapData } };
+  return { props: { basicCryptoData, cryptoOverviewData } };
 }
 export default function Price({
-  coincapCryptoData,
-  coinmarketcapData,
+  basicCryptoData,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const [cryptoData, setCryptoData] = useState(coincapCryptoData);
+  const [cryptoData, setCryptoData] = useState(basicCryptoData);
 
   return (
     <div>

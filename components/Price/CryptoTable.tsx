@@ -47,8 +47,12 @@ export default function CryptoTable({ cryptoData, setCryptoData }: Props) {
         : `ascending ${property}`;
     });
   };
-  const addDefaultSrc = (event: any) => {
+  const addDefaultIcon = (event: any) => {
     event.target.src = "./crypto-icon.png";
+  };
+  const addDefaultChart = (event: any) => {
+    event.target.src =
+      "https://graphsv2.coinpaprika.com/currency/chart/btc-bitcoin/7d/chart.svg";
   };
 
   return (
@@ -78,6 +82,7 @@ export default function CryptoTable({ cryptoData, setCryptoData }: Props) {
                   </button>
                 </th>
                 <th className="">Price</th>
+                <th>7d</th>
                 <th className="">24H Change</th>
                 <th className="">24H Volume</th>
                 <th className="">Market Cap</th>
@@ -98,12 +103,19 @@ export default function CryptoTable({ cryptoData, setCryptoData }: Props) {
                         src={`https://assets.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`}
                         alt={coin.id}
                         className="max-w-[2rem] h-auto mr-2 "
-                        onError={addDefaultSrc}
+                        onError={addDefaultIcon}
                       />
 
                       {coin.name}
                     </td>
                     <td>${roundCryptoPrice(parseFloat(coin.priceUsd))}</td>
+                    <td>
+                      <img
+                        src={`https://graphsv2.coinpaprika.com/currency/chart/${coin.symbol}-${coin.id}/7d/chart.svg`}
+                        alt={`Graph of ${coin.name} from the last seven days`}
+                        onError={addDefaultChart}
+                      />
+                    </td>
                     <td className={`${rocColour} font-bold`}>
                       {parseFloat(coin.changePercent24Hr) > 0 && "+"}
                       {roundCryptoPercentage(
