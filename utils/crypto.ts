@@ -56,11 +56,40 @@ export async function fetchCoinCapCryptoData(limit: number, offset: number) {
   const data = await res.json();
   return data.data;
 }
-
+//gives global data
 export async function fetchCoinMarketCapData() {
   const res = await fetch(
     `https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest?CMC_PRO_API_KEY=${process.env.COINMARKETCAP_PRIVATE_API_KEY}`
   );
   const data = await res.json();
   return data.data;
+}
+
+export async function fetchTrendingCryptoData() {
+  const res = await fetch("https://api.coingecko.com/api/v3/search/trending");
+  const data = await res.json();
+  return data.coins;
+}
+//https://api.coinpaprika.com/v1/global coinpaprika for new last api (other than coingecko )
+//https://api.coinpaprika.com/
+
+export async function fetchHistoricalCryptoData(
+  coin: string,
+  days: string,
+  currency = "usd"
+) {
+  const options = {
+    method: "GET",
+
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.COINCAP_PRIVATE_API_KEY}`,
+    },
+  };
+
+  const res = await fetch(
+    `https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=${currency}&days=${days}`
+  );
+  const data = await res.json();
+  return data;
 }

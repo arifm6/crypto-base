@@ -6,6 +6,7 @@ import {
   roundCryptoPercentage,
   roundCryptoPrice,
 } from "../../utils/crypto";
+import CryptoChart from "../CryptoChart";
 
 type Props = {
   coincapCryptoData: Array<Coin>;
@@ -40,7 +41,9 @@ export default function CryptoTable({ coincapCryptoData }: Props) {
               <p className=" w-1/5  hidden md:inline text-center ">
                 {currencyFormat(parseFloat(coin.marketCapUsd))}
               </p>
-              <div className="w-1/5 hidden md:block">this represents chart</div>
+              <div className="w-1/5 hidden md:block">
+                <CryptoChart />
+              </div>
               <button className={`btn btn-primary`}>Trade</button>
             </div>
           );
