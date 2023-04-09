@@ -82,7 +82,7 @@ export default function CryptoTable({ cryptoData, setCryptoData }: Props) {
                   </button>
                 </th>
                 <th className="">Price</th>
-                <th>7d</th>
+                <th>7D CHART</th>
                 <th className="">24H Change</th>
                 <th className="">24H Volume</th>
                 <th className="">Market Cap</th>
@@ -109,11 +109,12 @@ export default function CryptoTable({ cryptoData, setCryptoData }: Props) {
                       {coin.name}
                     </td>
                     <td>${roundCryptoPrice(parseFloat(coin.priceUsd))}</td>
-                    <td>
+                    <td className="">
                       <img
                         src={`https://graphsv2.coinpaprika.com/currency/chart/${coin.symbol}-${coin.id}/7d/chart.svg`}
                         alt={`Graph of ${coin.name} from the last seven days`}
                         onError={addDefaultChart}
+                        className="min-w-[120px] "
                       />
                     </td>
                     <td className={`${rocColour} font-bold`}>

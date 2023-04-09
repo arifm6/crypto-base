@@ -26,7 +26,7 @@ export default function CryptoTablePagination({
   };
 
   return (
-    <div className="flex justify-between overflow-scroll ">
+    <div className="flex justify-between overflow-auto ">
       <div></div>
       <ReactPaginate
         pageCount={numberOfPages}
