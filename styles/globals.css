@@ -10,10 +10,11 @@
     @apply text-primary w-8 h-8 shrink-0;
   }
   .phone-glow {
+    transform: rotate(90deg);
     background: radial-gradient(
-      circle at 50% 50%,
+      ellipse at 50% 50%,
       rgba(181, 69, 16, 0.4),
-      transparent 60%
+      transparent 50%
     );
   }
 }
