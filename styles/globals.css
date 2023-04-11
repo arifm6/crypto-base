@@ -2,18 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-::before,
-::after,
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 @layer {
-  .section {
-    @apply max-w-7xl mx-auto bg-red-400;
+  .hero-li {
+    @apply flex;
   }
-  .pagination {
-    @apply flex justify-center cursor-pointer border-2 border-red-400;
+  .hero-checked-circle {
+    @apply text-primary w-8 h-8 shrink-0;
+  }
+  .phone-glow {
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(181, 69, 16, 0.7),
+      transparent 60%
+    );
   }
 }

@@ -5,6 +5,7 @@ import { fetchBasicCryptoData } from "../utils/crypto";
 import Head from "next/head";
 import Navbar from "../components/Home/Navbar";
 import CryptoTable from "../components/Home/CryptoTable";
+import Hero from "../components/Home/Hero";
 
 type Props = {};
 
@@ -24,6 +25,9 @@ export default function Home({
         <link rel="icon" href="/crypto-icon.png" />
       </Head>
       <Navbar />
+      <section>
+        <Hero />
+      </section>
       <CryptoTable rankedCryptoData={rankedCryptoData} />
     </div>
   );
