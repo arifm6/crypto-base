@@ -67,8 +67,8 @@ export default function Hero({}: Props) {
         </div>
       </div>
 
-      <div className="lg:mt-12 relative flex items-center justify-center py-2 ">
-        <div className="absolute w-full h-[120%] phone-glow"></div>
+      <div className="mt-12 md:mt-16 relative flex items-center justify-center py-2 ">
+        <div className="absolute w-full h-full phone-glow "></div>
         <img
           src="/mobiledashboard.png"
           className="relative h-[450px] md:h-[610px] lg:h-[960px]"

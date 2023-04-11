@@ -12,7 +12,7 @@ export function roundCryptoPrice(price: number) {
 }
 
 export function roundCryptoPercentage(percentage: number) {
-  return Math.round((percentage + Number.EPSILON) * 100) / 100;
+  return (Math.round((percentage + Number.EPSILON) * 100) / 100).toFixed(2);
 }
 
 export function currencyFormat(num: number) {
