@@ -65,7 +65,7 @@ export default function CryptoTable({ rankedCryptoData }: Props) {
           })}
         </div>
         <div className="text-center">
-          <Link href="/price" className="btn btn-outline ">
+          <Link href="/price" className="btn btn-outline">
             Learn More
           </Link>
         </div>
