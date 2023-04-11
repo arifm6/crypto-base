@@ -71,7 +71,7 @@ export default function Hero({}: Props) {
         <div className="absolute w-full h-[120%] phone-glow"></div>
         <img
           src="/mobiledashboard.png"
-          className="relative h-[450px] md:h-[610px] lg:h-[960px] "
+          className="relative h-[450px] md:h-[610px] lg:h-[960px]"
           alt="CryptoBase Mobile App Dashboard"
         />
       </div>
