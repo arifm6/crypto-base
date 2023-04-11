@@ -6,6 +6,7 @@ import Head from "next/head";
 import Navbar from "../components/Home/Navbar";
 import Trading from "../components/Home/Trading";
 import Hero from "../components/Home/Hero";
+import Benefits from "../components/Home/Benefits";
 
 type Props = {};
 
@@ -30,6 +31,9 @@ export default function Home({
       </section>
       <section>
         <Trading rankedCryptoData={rankedCryptoData} />
+      </section>
+      <section>
+        <Benefits />
       </section>
     </div>
   );

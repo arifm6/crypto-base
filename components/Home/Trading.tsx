@@ -53,10 +53,11 @@ export default function CryptoTable({ rankedCryptoData }: Props) {
                 <p className=" w-1/5  hidden md:inline text-center ">
                   {currencyFormat(parseFloat(coin.marketCapUsd))}
                 </p>
-                <div className="w-1/5 hidden md:block">
+                <div className="w-1/6 hidden md:block ">
                   <img
                     src={`https://graphsv2.coinpaprika.com/currency/chart/${coin.symbol}-${coin.id}/7d/chart.svg`}
-                    alt=""
+                    alt={`7D Chart of ${coin.name}`}
+                    className="w-full"
                   />{" "}
                 </div>
                 <button className={`btn btn-primary`}>Trade</button>
