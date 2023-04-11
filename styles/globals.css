@@ -12,7 +12,7 @@
   .phone-glow {
     background: radial-gradient(
       circle at 50% 50%,
-      rgba(181, 69, 16, 0.7),
+      rgba(181, 69, 16, 0.4),
       transparent 60%
     );
   }

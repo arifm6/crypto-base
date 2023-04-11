@@ -4,7 +4,7 @@ import React from "react";
 import { fetchBasicCryptoData } from "../utils/crypto";
 import Head from "next/head";
 import Navbar from "../components/Home/Navbar";
-import CryptoTable from "../components/Home/CryptoTable";
+import Trading from "../components/Home/Trading";
 import Hero from "../components/Home/Hero";
 
 type Props = {};
@@ -19,7 +19,7 @@ export default function Home({
   rankedCryptoData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <div>
+    <div className="space-y-32 md:space-y-36">
       <Head>
         <title>CryptoBase</title>
         <link rel="icon" href="/crypto-icon.png" />
@@ -28,7 +28,9 @@ export default function Home({
       <section>
         <Hero />
       </section>
-      <CryptoTable rankedCryptoData={rankedCryptoData} />
+      <section>
+        <Trading rankedCryptoData={rankedCryptoData} />
+      </section>
     </div>
   );
 }
