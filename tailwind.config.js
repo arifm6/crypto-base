@@ -2,9 +2,6 @@
 const halloween = require("daisyui/src/colors/themes")[
   "[data-theme=halloween]"
 ];
-const bumblebee = require("daisyui/src/colors/themes")[
-  "[data-theme=bumblebee]"
-];
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
@@ -21,13 +18,6 @@ module.exports = {
   plugins: [require("daisyui")],
   daisyui: {
     themes: [
-      {
-        bumblebee: {
-          ...bumblebee,
-          success: "#228B22",
-          error: "#FF0000",
-        },
-      },
       {
         halloween: {
           ...halloween,

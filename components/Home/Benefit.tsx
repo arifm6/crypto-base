@@ -9,7 +9,7 @@ type Props = {
 
 export default function Benefit({ icon, title, mainContent, mainLink }: Props) {
   return (
-    <div className="card w-72 lg:w-96 bg-base-100 shadow-xl items-center ">
+    <div className="card  w-72 lg:w-96 bg-base-100  items-center ">
       <div className="text-5xl text-primary ">{icon}</div>
       <div className="card-body items-center text-center space-y-4">
         <h2 className="card-title">{title}</h2>
