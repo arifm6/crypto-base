@@ -53,9 +53,10 @@ export default function Benefits({}: Props) {
         </h2>
       </div>
       <div className="flex flex-col items-center md:items-stretch md:flex-row justify-center">
-        {benefitsData.map((benefit) => {
+        {benefitsData.map((benefit, i) => {
           return (
             <Benefit
+              key={i}
               icon={benefit.icon}
               title={benefit.title}
               mainContent={benefit.mainContent}
