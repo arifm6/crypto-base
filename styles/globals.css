@@ -10,11 +10,29 @@
     @apply text-primary w-8 h-8 shrink-0;
   }
   .phone-glow {
-    transform: rotate(90deg);
+    @apply h-full w-full absolute;
     background: radial-gradient(
-      ellipse at 50% 50%,
+      circle at 50% 50%,
       rgba(181, 69, 16, 0.4),
-      transparent 50%
+      transparent 225px
     );
+  }
+  @media only screen and (min-width: 768px) {
+    .phone-glow {
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(181, 69, 16, 0.4),
+        transparent 305px
+      );
+    }
+  }
+  @media only screen and (min-width: 1024px) {
+    .phone-glow {
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(181, 69, 16, 0.4),
+        transparent 480px
+      );
+    }
   }
 }

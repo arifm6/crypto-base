@@ -18,7 +18,9 @@ export default function CryptoTable({ rankedCryptoData }: Props) {
             </h4>
           </div>
           <div>
-            <h1 className="text-5xl font-bold">Buy crypto at true cost</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold">
+              Buy crypto at true cost
+            </h1>
           </div>
           <div>
             <p className="font-semibold">

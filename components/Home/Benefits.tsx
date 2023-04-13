@@ -45,7 +45,7 @@ export default function Benefits({}: Props) {
   return (
     <div className="max-w-full mx-auto space-y-12">
       <div className="text-center space-y-8">
-        <h1 className="text-5xl font-bold">
+        <h1 className="text-4xl lg:text-5xl font-bold">
           The most trust cryptocurrency platform
         </h1>
         <h2 className="text-center font-light">

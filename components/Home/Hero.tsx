@@ -7,7 +7,7 @@ export default function Hero({}: Props) {
   return (
     <>
       <div className="max-w-4xl mx-auto px-4 space-y-8">
-        <h1 className="font-bold text-5xl text-center ">
+        <h1 className="font-bold text-4xl lg:text-5xl text-center ">
           The Number One Platform for CryptoNews and Exchange
         </h1>
         <ul className="[&>li]:space-x-2 space-y-2">
@@ -36,7 +36,7 @@ export default function Hero({}: Props) {
             </p>
           </li>
         </ul>
-        <div className="flex flex-wrap justify-center gap-2 py-2 ">
+        <div className="flex flex-col md:flex-row items-center md:items-stretch  flex-wrap justify-center gap-4 py-2 ">
           <a
             href="https://play.google.com/store/apps"
             target="_blank"
@@ -67,8 +67,8 @@ export default function Hero({}: Props) {
         </div>
       </div>
 
-      <div className="mt-12 md:mt-16 relative flex items-center justify-center py-2 ">
-        <div className="absolute w-full h-full phone-glow "></div>
+      <div className="mt-12 md:mt-16 relative flex items-center justify-center py-2">
+        <div className="phone-glow "></div>
         <img
           src="/mobiledashboard.png"
           className="relative h-[450px] md:h-[610px] lg:h-[960px]"
