@@ -3,6 +3,7 @@ import { Coin } from "../../types/Coin";
 import { currencyFormat, roundCryptoPercentage } from "../../utils/crypto";
 import Link from "next/link";
 import TradeModal from "./TradeModal";
+import { addDefaultChart } from "../../utils/chart";
 
 type Props = {
   rankedCryptoData: Array<Coin>;
@@ -71,6 +72,7 @@ export default function CryptoTable({ rankedCryptoData }: Props) {
                     src={`https://graphsv2.coinpaprika.com/currency/chart/${coin.symbol}-${coin.id}/7d/chart.svg`}
                     alt={`7D Chart of ${coin.name}`}
                     className="w-full"
+                    onError={addDefaultChart}
                   />{" "}
                 </div>
                 <div className="lg:relative lg:flex lg:items-center ">

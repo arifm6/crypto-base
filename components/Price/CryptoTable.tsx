@@ -12,6 +12,7 @@ import {
   roundCryptoPrice,
 } from "../../utils/crypto";
 import { Coin } from "../../types/Coin";
+import { addDefaultChart, addDefaultIcon } from "../../utils/chart";
 type Props = {
   cryptoData: Array<Coin>;
   setCryptoData: Dispatch<any>;
@@ -46,13 +47,6 @@ export default function CryptoTable({ cryptoData, setCryptoData }: Props) {
         ? `descending ${property}`
         : `ascending ${property}`;
     });
-  };
-  const addDefaultIcon = (event: any) => {
-    event.target.src = "./crypto-icon.png";
-  };
-  const addDefaultChart = (event: any) => {
-    event.target.src =
-      "https://graphsv2.coinpaprika.com/currency/chart/btc-bitcoin/7d/chart.svg";
   };
 
   return (
