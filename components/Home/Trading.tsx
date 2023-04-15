@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Coin } from "../../types/Coin";
 import { currencyFormat, roundCryptoPercentage } from "../../utils/crypto";
 import Link from "next/link";
+import TradeModal from "./TradeModal";
 
 type Props = {
   rankedCryptoData: Array<Coin>;
 };
 
 export default function CryptoTable({ rankedCryptoData }: Props) {
+  const [activeTradeModal, setActiveTradeModal] = useState<string | undefined>(
+    undefined
+  );
+  function handleModalClick(event: any) {
+    if (event.target.dataset.modal === activeTradeModal) {
+      setActiveTradeModal(undefined);
+    } else {
+      setActiveTradeModal(event.target.dataset.modal);
+    }
+  }
   return (
     <div className="px-3 md:px-12  ">
       <div className="max-w-7xl mx-auto space-y-12 ">
@@ -62,7 +73,23 @@ export default function CryptoTable({ rankedCryptoData }: Props) {
                     className="w-full"
                   />{" "}
                 </div>
-                <button className={`btn btn-primary`}>Trade</button>
+                <div className="lg:relative lg:flex lg:items-center ">
+                  {activeTradeModal === coin.id && (
+                    <TradeModal
+                      handleModalClick={handleModalClick}
+                      coinName={coin.name}
+                      coinId={coin.id}
+                    />
+                  )}
+
+                  <button
+                    className={`btn btn-outline `}
+                    data-modal={coin.id}
+                    onClick={handleModalClick}
+                  >
+                    Trade
+                  </button>
+                </div>
               </div>
             );
           })}
