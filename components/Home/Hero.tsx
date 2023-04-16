@@ -11,23 +11,23 @@ export default function Hero({}: Props) {
           The Number One Platform for CryptoNews and Exchange
         </h1>
         <ul className="[&>li]:space-x-2 space-y-2">
-          <li className="hero-li">
-            <AiFillCheckCircle className="hero-checked-circle " />
+          <li className="flex">
+            <AiFillCheckCircle className="ul-bullet " />
             <p>
               Trusted by over <span className="text-primary">9K users</span>{" "}
               worldwide
             </p>
           </li>
-          <li className="hero-li ">
-            <AiFillCheckCircle className="hero-checked-circle" />
+          <li className="flex ">
+            <AiFillCheckCircle className="ul-bullet" />
             <p>
               Industry leader in{" "}
               <span className="text-primary">comprehensive analysis </span> and{" "}
               <span className="text-primary">security compliance </span>
             </p>
           </li>
-          <li className="hero-li">
-            <AiFillCheckCircle className="hero-checked-circle" />
+          <li className="flex">
+            <AiFillCheckCircle className="ul-bullet" />
             <p>
               An easy to use, cross-platform tool for{" "}
               <span className="text-primary"> exchanging </span>and

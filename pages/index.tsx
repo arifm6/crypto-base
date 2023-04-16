@@ -9,6 +9,7 @@ import Hero from "../components/Home/Hero";
 import Benefits from "../components/Home/Benefits";
 import AboutBanner from "../components/Home/AboutBanner";
 import GetStarted from "../components/Home/GetStarted";
+import Portfolio from "../components/Home/Portfolio";
 
 type Props = {};
 
@@ -35,11 +36,15 @@ export default function Home({
         <Trading rankedCryptoData={rankedCryptoData} />
       </section>
       <section>
+        <Portfolio />
+      </section>
+      <section>
         <Benefits />
       </section>
       <section>
         <AboutBanner />
       </section>
+
       <section>
         <GetStarted />
       </section>

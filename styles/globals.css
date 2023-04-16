@@ -3,10 +3,7 @@
 @tailwind utilities;
 
 @layer {
-  .hero-li {
-    @apply flex;
-  }
-  .hero-checked-circle {
+  .ul-bullet {
     @apply text-primary w-8 h-8 shrink-0;
   }
   .phone-glow {
