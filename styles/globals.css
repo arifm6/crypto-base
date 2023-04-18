@@ -7,7 +7,7 @@
     @apply flex items-center  text-xl opacity-80 hover:text-white hover:opacity-100 p-4;
   }
   .learn-dropdown-grid {
-    display: grid;
+    display: inline-grid;
     grid-template-columns: repeat(3, auto);
   }
   .developers-dropdown-grid {
