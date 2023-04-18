@@ -7,11 +7,13 @@ import { RxCaretDown } from "react-icons/rx";
 import MobileMenu from "./MobileMenu";
 import NavbarDropdown from "./NavbarDropdown";
 import LearnDropdown from "./LearnDropdown";
+import DevelopersDropdown from "./DevelopersDropdown";
 type Props = {};
 
 export default function Navbar({}: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentDropdown, setCurrentDropdown] = useState<string | undefined>();
+  console.log(currentDropdown);
   function handleMouseEnter(event: SyntheticEvent<HTMLElement>) {
     setCurrentDropdown(event.currentTarget.dataset.dropdown);
   }
@@ -64,8 +66,10 @@ export default function Navbar({}: Props) {
                     data-dropdown="learn"
                   >
                     <div
-                      className={`nav-item-container border-b-4 border-b-transparent ${
-                        currentDropdown === "learn" && "border-b-primary"
+                      className={`nav-item-container border-b-4  ${
+                        currentDropdown === "learn"
+                          ? "border-b-primary"
+                          : "border-b-transparent"
                       }`}
                     >
                       <h5 className="text-xl ">Learn</h5>
@@ -76,19 +80,33 @@ export default function Navbar({}: Props) {
                     <NavbarDropdown dropdownContent={<LearnDropdown />} />
                   )}
                 </li>
-                <li data-dropdown="developers">
-                  <button>
-                    <div className="nav-item-container border-b-4 border-b-transparent hover:border-b-primary">
+                <li onMouseLeave={() => handleMouseExit()}>
+                  <button
+                    onMouseEnter={(e) => handleMouseEnter(e)}
+                    onClick={(e) => handleMouseClick(e)}
+                    data-dropdown="developers"
+                  >
+                    <div
+                      className={`nav-item-container border-b-4  ${
+                        currentDropdown === "developers"
+                          ? "border-b-primary"
+                          : "border-b-transparent"
+                      }`}
+                    >
                       <h5 className="text-xl ">Developers</h5>
                       <RxCaretDown className="text-2xl" />
                     </div>
                   </button>
+                  {currentDropdown === "developers" && (
+                    <NavbarDropdown dropdownContent={<DevelopersDropdown />} />
+                  )}
                 </li>
                 <li data-dropdown="company">
                   <button>
                     <div className="nav-item-container border-b-4 border-b-transparent hover:border-b-primary">
-                      <h5 className="text-xl ">Company</h5>
-                      <RxCaretDown className="text-2xl" />
+                      <a href="https://ahmadarif.com">
+                        <h5 className="text-xl ">About</h5>
+                      </a>
                     </div>
                   </button>
                 </li>
@@ -100,7 +118,7 @@ export default function Navbar({}: Props) {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <div className="p-[11px] rounded-md border-[0.5px] border-primary flex justify-center items-center">
+                <div className="p-[11px] rounded-md border-[0.5px] border-primary flex justify-center items-center btn btn-ghost">
                   <svg
                     width="24"
                     height="24"
@@ -120,7 +138,7 @@ export default function Navbar({}: Props) {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <div className="p-[11px] rounded-md border-[0.5px] border-primary flex justify-center items-center">
+                <div className="p-[11px] rounded-md border-[0.5px] border-primary flex justify-center items-center btn btn-ghost">
                   <svg
                     width="24"
                     height="24"

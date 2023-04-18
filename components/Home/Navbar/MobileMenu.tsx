@@ -15,13 +15,13 @@ export default function MobileMenu({ isOpen, setIsOpen }: Props) {
     >
       <div className="flex justify-between items-center px-8 sm:px-16 py-4 border-b-[0.5px] border-b-neutral">
         <div className="flex space-x-2">
-          <div className="flex space-x-2 sm:hidden ">
+          <div className="flex space-x-2 sm:hidden  ">
             <a
               href="https://www.apple.com/ca/app-store/"
               target="_blank"
               rel="noreferrer noopener"
             >
-              <div className="p-[11px] rounded-md border-[0.5px] border-neutral flex justify-center items-center">
+              <div className="p-[11px] rounded-md border-[0.5px] border-neutral flex justify-center items-center btn btn-ghost">
                 <svg
                   width="24"
                   height="24"
@@ -41,7 +41,7 @@ export default function MobileMenu({ isOpen, setIsOpen }: Props) {
               target="_blank"
               rel="noreferrer noopener"
             >
-              <div className="p-[11px] rounded-md border-[0.5px] border-neutral flex justify-center items-center">
+              <div className="p-[11px] rounded-md border-[0.5px] border-neutral flex justify-center items-center btn btn-ghost">
                 <svg
                   width="24"
                   height="24"
