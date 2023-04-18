@@ -94,7 +94,7 @@ export default function Navbar({}: Props) {
                 </li>
               </ul>
             </nav>
-            <div className="flex space-x-2">
+            <div className="hidden sm:flex space-x-2">
               <a
                 href="https://www.apple.com/ca/app-store/"
                 target="_blank"
