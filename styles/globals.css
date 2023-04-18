@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 @layer {
+  .nav-item-container {
+    @apply flex items-center text-xl opacity-80 hover:text-white hover:opacity-100 p-4;
+  }
+  .learn-dropdown-grid {
+    display: inline-grid;
+    grid-template-columns: repeat(3, auto);
+  }
   .ul-bullet {
     @apply text-primary w-8 h-8 shrink-0;
   }

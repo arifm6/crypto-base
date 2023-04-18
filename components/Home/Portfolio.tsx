@@ -28,7 +28,7 @@ export default function Portfolio({}: Props) {
       icon: <FaMobileAlt />,
       title: "Mobile apps",
       content: (
-        <p>
+        <span>
           Stay on top of the markets with the Coinbase app for{" "}
           <a
             className="text-primary font-normal"
@@ -49,7 +49,7 @@ export default function Portfolio({}: Props) {
             iOS
           </a>
           .
-        </p>
+        </span>
       ),
     },
   ];
@@ -69,7 +69,10 @@ export default function Portfolio({}: Props) {
           <ul className="hidden lg:flex flex-col gap-12">
             {portfolioData.map((portfolioItem) => {
               return (
-                <li className="flex  sm:flex-row  gap-4 items-center">
+                <li
+                  key={portfolioItem.title}
+                  className="flex  sm:flex-row  gap-4 items-center"
+                >
                   <div className="text-primary text-6xl">
                     {portfolioItem.icon}
                   </div>
@@ -93,7 +96,10 @@ export default function Portfolio({}: Props) {
       <ul className="xl:hidden flex flex-col  gap-12 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl">
         {portfolioData.map((portfolioItem) => {
           return (
-            <li className="flex flex-col sm:flex-row  items-center gap-4 sm:items-start ">
+            <li
+              key={portfolioItem.title}
+              className="flex flex-col sm:flex-row  items-center gap-4 sm:items-start "
+            >
               <div className="text-primary text-6xl">{portfolioItem.icon}</div>
               <div className="text-center sm:text-left space-y-4 px-4">
                 <h3 className="text-2xl font-medium">{portfolioItem.title}</h3>

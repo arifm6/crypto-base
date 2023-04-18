@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { fetchBasicCryptoData } from "../utils/crypto";
 import Head from "next/head";
-import Navbar from "../components/Home/Navbar";
+import Navbar from "../components/Home/Navbar/Navbar";
 import Trading from "../components/Home/Trading";
 import Hero from "../components/Home/Hero";
 import Benefits from "../components/Home/Benefits";
