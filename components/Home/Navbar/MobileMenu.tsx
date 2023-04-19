@@ -1,7 +1,17 @@
-import React, { Dispatch, SetStateAction } from "react";
+import Link from "next/link";
+import React, {
+  Dispatch,
+  SetStateAction,
+  SyntheticEvent,
+  useMemo,
+  useState,
+} from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsGlobe } from "react-icons/bs";
-
+import { FaMobileAlt } from "react-icons/fa";
+import { RxCaretDown } from "react-icons/rx";
+import learnData from "./learnData.json";
+import developersData from "./developersData.json";
 type Props = {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<any>>;
@@ -9,11 +19,28 @@ type Props = {
 
 export default function MobileMenu({ isOpen, setIsOpen }: Props) {
   const position = isOpen ? "translate-x-0" : "translate-x-full";
+  const [currentDropdown, setCurrentDropdown] = useState<undefined | string>(
+    undefined
+  );
+  const apiData = useMemo(() => {
+    return developersData.apiData;
+  }, []);
+  const techData = useMemo(() => developersData.techData, []);
+  const otherData = useMemo(() => developersData.otherData, []);
+
+  function handleMouseClick(event: SyntheticEvent<HTMLElement>) {
+    if (currentDropdown === event.currentTarget.dataset.dropdown) {
+      setCurrentDropdown(undefined);
+    } else {
+      setCurrentDropdown(event.currentTarget.dataset.dropdown);
+    }
+  }
+
   return (
     <div
-      className={`lg:hidden fixed top-0 left-0 w-full h-full  z-[9999] bg-neutral-content text-neutral ${position} transition-transform duration-200`}
+      className={`xl:hidden fixed inset-0 w-full h-full z-[9999] bg-neutral-content text-neutral ${position} transition-transform duration-200 flex flex-col justify-between overflow-scroll overscroll-contain`}
     >
-      <div className="flex justify-between items-center px-8 sm:px-16 py-4 border-b-[0.5px] border-b-neutral">
+      <div className="flex justify-between items-center px-8 sm:px-16 py-3 border-b-[0.5px] border-b-neutral">
         <div className="flex space-x-2">
           <div className="flex space-x-2 sm:hidden  ">
             <a
@@ -74,6 +101,158 @@ export default function MobileMenu({ isOpen, setIsOpen }: Props) {
         >
           <AiOutlineClose className="w-8 h-8" />
         </button>
+      </div>
+      <div className="grow flex flex-col py-3 ">
+        {" "}
+        <Link href={"/"} className="flex items-center space-x-2 px-8 sm:px-16 ">
+          <h1 className="text-xl font-medium">CryptoBase.com</h1>{" "}
+          <img
+            src="/crypto-icon.png"
+            alt="CryptoBase Icon"
+            className="w-10 h-10 bg-neutral rounded-full"
+          />
+        </Link>
+        <Link href={"/nft"} className="px-8 sm:px-16 ">
+          {" "}
+          <h5 className="font-semibold text-xl py-4">NFT</h5>
+        </Link>
+        <Link href={"/price"} className="px-8 sm:px-16 ">
+          {" "}
+          <h5 className="font-semibold text-xl py-4">Prices</h5>
+        </Link>
+        <div className="flex flex-col ">
+          <button
+            className="flex justify-between items-center  px-8 sm:px-16"
+            data-dropdown="learn"
+            onClick={(e) => handleMouseClick(e)}
+          >
+            <h5 className="font-semibold text-xl py-4">Learn</h5>
+            <RxCaretDown
+              className={`text-3xl transition-transform duration-300 ${
+                currentDropdown === "learn" && "rotate-180"
+              }`}
+            />
+          </button>
+          <div
+            className={`flex-col ${
+              currentDropdown === "learn" ? "flex" : "hidden"
+            }`}
+          >
+            {learnData.map((learnDataItem) => {
+              return (
+                <a
+                  key={learnDataItem.title}
+                  href={learnDataItem.url}
+                  className="flex justify-between items-center  px-8 sm:px-16 bg-gray-400"
+                >
+                  <h5 className="font-semibold text-xl py-4">
+                    {learnDataItem.title}
+                  </h5>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+        <div className="flex flex-col ">
+          <button
+            className="flex justify-between items-center  px-8 sm:px-16"
+            data-dropdown="developers"
+            onClick={(e) => handleMouseClick(e)}
+          >
+            <h5 className="font-semibold text-xl py-4">Developers</h5>
+            <RxCaretDown
+              className={`text-3xl transition-transform duration-300 ${
+                currentDropdown === "developers" && "rotate-180"
+              }`}
+            />
+          </button>
+          <div
+            className={`flex-col ${
+              currentDropdown === "developers" ? "flex" : "hidden"
+            }`}
+          >
+            {apiData.map((apiDataItem) => {
+              return (
+                <a
+                  key={apiDataItem.title}
+                  href={apiDataItem.url}
+                  className="flex justify-start gap-2 items-center  px-8 sm:px-16 bg-gray-400"
+                >
+                  <img
+                    src={apiDataItem.icon}
+                    alt={apiDataItem.iconAlt}
+                    className="w-10 h-10"
+                  />
+                  <h5 className="font-semibold text-xl py-4">
+                    {apiDataItem.title}
+                  </h5>
+                </a>
+              );
+            })}
+          </div>
+          <div
+            className={`flex-col ${
+              currentDropdown === "developers" ? "flex" : "hidden"
+            }`}
+          >
+            {techData.map((techDataItem) => {
+              return (
+                <a
+                  key={techDataItem.title}
+                  href={techDataItem.url}
+                  className="flex justify-start gap-2 items-center  px-8 sm:px-16 bg-gray-400"
+                >
+                  <img
+                    src={techDataItem.icon}
+                    alt={techDataItem.iconAlt}
+                    className="w-10 h-10"
+                  />
+                  <h5 className="font-semibold text-xl py-4">
+                    {techDataItem.title}
+                  </h5>
+                </a>
+              );
+            })}
+          </div>
+          <div
+            className={`flex-col ${
+              currentDropdown === "developers" ? "flex" : "hidden"
+            }`}
+          >
+            {otherData.map((otherDataItem) => {
+              return (
+                <a
+                  key={otherDataItem.title}
+                  href={otherDataItem.url}
+                  className="flex justify-start gap-2 items-center  px-8 sm:px-16 bg-gray-400"
+                >
+                  <img
+                    src={otherDataItem.icon}
+                    alt={otherDataItem.iconAlt}
+                    className="w-10 h-10"
+                  />
+                  <h5 className="font-semibold text-xl py-4">
+                    {otherDataItem.title}
+                  </h5>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+        <a href="https://ahmadarif.com" className="px-8 sm:px-16 ">
+          {" "}
+          <h5 className="font-semibold text-xl py-4">About</h5>
+        </a>
+      </div>
+      <div className="px-8 sm:px-16 py-4 border-t-[0.5px] border-t-neutral">
+        <a
+          href="https://play.google.com/store/apps/details?id=co.mona.android"
+          rel="noreferrer noopener"
+        >
+          <button className="btn btn-outline text-neutral text-lg flex gap-2">
+            <FaMobileAlt /> <p>Download App</p>
+          </button>
+        </a>
       </div>
     </div>
   );

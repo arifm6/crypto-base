@@ -1,9 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import React, { SyntheticEvent, useState } from "react";
 import { HiBars3 } from "react-icons/hi2";
 import { BsGlobe } from "react-icons/bs";
-import { RxCaretDown } from "react-icons/rx";
 import MobileMenu from "./MobileMenu";
 import NavbarDropdown from "./NavbarDropdown";
 import LearnDropdown from "./LearnDropdown";
@@ -13,7 +11,6 @@ type Props = {};
 export default function Navbar({}: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentDropdown, setCurrentDropdown] = useState<string | undefined>();
-  console.log(currentDropdown);
   function handleMouseEnter(event: SyntheticEvent<HTMLElement>) {
     setCurrentDropdown(event.currentTarget.dataset.dropdown);
   }
@@ -73,7 +70,6 @@ export default function Navbar({}: Props) {
                       }`}
                     >
                       <h5 className="text-xl ">Learn</h5>
-                      <RxCaretDown className="text-2xl" />
                     </div>
                   </button>
                   {currentDropdown === "learn" && (
@@ -94,7 +90,6 @@ export default function Navbar({}: Props) {
                       }`}
                     >
                       <h5 className="text-xl ">Developers</h5>
-                      <RxCaretDown className="text-2xl" />
                     </div>
                   </button>
                   {currentDropdown === "developers" && (
