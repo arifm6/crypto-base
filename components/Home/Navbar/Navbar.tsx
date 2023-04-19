@@ -157,10 +157,6 @@ export default function Navbar({}: Props) {
                   }}
                 />
               </button>
-              <button className="hidden xl:flex gap-1 items-center">
-                <BsGlobe className=" w-5 h-5 " />
-                English
-              </button>
             </div>
           </div>
         </div>

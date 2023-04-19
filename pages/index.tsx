@@ -10,7 +10,7 @@ import Benefits from "../components/Home/Benefits";
 import AboutBanner from "../components/Home/AboutBanner";
 import GetStarted from "../components/Home/GetStarted";
 import Portfolio from "../components/Home/Portfolio";
-
+import Footer from "../components/Home/Footer";
 type Props = {};
 
 export async function getStaticProps() {
@@ -47,6 +47,9 @@ export default function Home({
 
       <section>
         <GetStarted />
+      </section>
+      <section>
+        <Footer />
       </section>
     </div>
   );

@@ -30,6 +30,9 @@ export default function GetStarted({}: Props) {
           <h2 className="text-xl">Starting trading</h2>
         </div>
       </div>
+      <div className="flex justify-center">
+        <a className="btn btn-primary">Get Started</a>
+      </div>
     </div>
   );
 }

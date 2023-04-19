@@ -40,15 +40,24 @@ export default function MobileMenu({ isOpen, setIsOpen }: Props) {
     <div
       className={`xl:hidden fixed inset-0 w-full h-full z-[9999] bg-neutral-content text-neutral ${position} transition-transform duration-200 flex flex-col justify-between overflow-scroll overscroll-contain`}
     >
-      <div className="flex justify-between items-center px-8 sm:px-16 py-3 border-b-[0.5px] border-b-neutral">
-        <div className="flex space-x-2">
+      <div className="flex justify-between items-center px-8 sm:px-16 py-5 border-b-[0.5px] border-b-neutral ">
+        <Link href={"/"} className="flex items-center space-x-2 ">
+          <h1 className="text-xl font-medium">CryptoBase.com</h1>{" "}
+          <img
+            src="/crypto-icon.png"
+            alt="CryptoBase Icon"
+            className="w-10 h-10 bg-neutral rounded-full"
+          />
+        </Link>
+
+        <div className="flex space-x-2 ">
           <div className="flex space-x-2 sm:hidden  ">
             <a
               href="https://www.apple.com/ca/app-store/"
               target="_blank"
               rel="noreferrer noopener"
             >
-              <div className="p-[11px] rounded-md border-[0.5px] border-neutral flex justify-center items-center btn btn-ghost">
+              <div className="p-[11px]  rounded-md border-[0.5px] border-neutral flex justify-center items-center btn btn-ghost">
                 <svg
                   width="24"
                   height="24"
@@ -83,13 +92,6 @@ export default function MobileMenu({ isOpen, setIsOpen }: Props) {
               </div>
             </a>
           </div>
-
-          <div className="flex items-center space-x-2 py-3  ">
-            <BsGlobe className="w-5 h-5" />
-            <p>CA</p>
-            <div className="h-4 w-[1px] border-[0.5px] border-neutral"></div>
-            <p>EN</p>
-          </div>
         </div>
 
         <button
@@ -104,14 +106,6 @@ export default function MobileMenu({ isOpen, setIsOpen }: Props) {
       </div>
       <div className="grow flex flex-col py-3 ">
         {" "}
-        <Link href={"/"} className="flex items-center space-x-2 px-8 sm:px-16 ">
-          <h1 className="text-xl font-medium">CryptoBase.com</h1>{" "}
-          <img
-            src="/crypto-icon.png"
-            alt="CryptoBase Icon"
-            className="w-10 h-10 bg-neutral rounded-full"
-          />
-        </Link>
         <Link href={"/nft"} className="px-8 sm:px-16 ">
           {" "}
           <h5 className="font-semibold text-xl py-4">NFT</h5>
