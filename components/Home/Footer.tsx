@@ -63,13 +63,13 @@ export default function Footer({}: Props) {
         </div>
         <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
           <a href="https://ahmadarif.com">
-            <FaGlobe className="w-10 h-10" />
+            <FaGlobe className="w-8 h-8" />
           </a>
           <a href="https://www.linkedin.com/in/ahmadmarif/">
-            <BsLinkedin className="w-10 h-10 text-[#0072b1] bg-white rounded-md " />
+            <BsLinkedin className="w-8 h-8 text-[#0072b1] bg-white rounded-md " />
           </a>
           <a href="https://github.com/arifm6">
-            <FaGithub className="w-10 h-10 text-white" />{" "}
+            <FaGithub className="w-8 h-8 text-white" />{" "}
           </a>
         </div>
       </div>

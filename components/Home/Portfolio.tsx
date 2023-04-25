@@ -2,6 +2,7 @@ import React from "react";
 import { AiFillCalendar, AiFillFolderOpen } from "react-icons/ai";
 import { RiSafe2Fill } from "react-icons/ri";
 import { FaMobileAlt } from "react-icons/fa";
+import { motion } from "framer-motion";
 type Props = {};
 
 export default function Portfolio({}: Props) {
@@ -56,42 +57,66 @@ export default function Portfolio({}: Props) {
   return (
     <div className="flex flex-col items-center gap-6">
       <div className="text-center space-y-8">
-        <h1 className="text-4xl lg:text-5xl font-bold">
-          Create your cryptocurrent portfolio today
-        </h1>
-        <h2 className="font-light">
-          CryptoBase has a variety of features that make it the ideal place to
-          start trading
-        </h2>
-      </div>
-      <div className="flex max-w-7xl">
-        <div className="hidden xl:flex items-center mx-4 lg:max-w-7xl ">
-          <ul className="hidden lg:flex flex-col gap-12">
-            {portfolioData.map((portfolioItem) => {
-              return (
-                <li
-                  key={portfolioItem.title}
-                  className="flex  sm:flex-row  gap-4 items-center"
-                >
-                  <div className="text-primary text-6xl">
-                    {portfolioItem.icon}
-                  </div>
-                  <div className="text-center sm:text-left space-y-4 px-4">
-                    <h3 className="text-2xl font-medium">
-                      {portfolioItem.title}
-                    </h3>
-                    <p className="font-light">{portfolioItem.content} </p>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
+        <div className="overflow-y-hidden py-1">
+          <motion.h1
+            initial={{ y: "100%", opacity: 0.5 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ margin: "-80.5px 0px 0px 0px" }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl lg:text-5xl font-bold"
+          >
+            Create your cryptocurrent portfolio today
+          </motion.h1>
         </div>
-        <img
-          src="/portfolio-image.png"
-          className="sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl"
-          alt=""
-        />
+        <div className="overflow-y-hidden py-1">
+          <motion.h2
+            initial={{ y: "100%", opacity: 0.5 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ margin: "-80.5px 0px 0px 0px" }}
+            transition={{ duration: 0.5 }}
+            className="font-light"
+          >
+            CryptoBase has a variety of features that make it the ideal place to
+            start trading
+          </motion.h2>
+        </div>
+      </div>
+      <div className="overflow-hidden">
+        <motion.div
+          initial={{ y: "20%", opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ margin: "-25% 0px -25% 0px" }}
+          transition={{ duration: 1.5 }}
+          className="flex max-w-7xl "
+        >
+          <div className="hidden xl:flex items-center mx-4 lg:max-w-7xl  ">
+            <ul className="hidden lg:flex flex-col gap-12">
+              {portfolioData.map((portfolioItem) => {
+                return (
+                  <li
+                    key={portfolioItem.title}
+                    className="flex  sm:flex-row  gap-4 items-center"
+                  >
+                    <div className="text-primary text-6xl">
+                      {portfolioItem.icon}
+                    </div>
+                    <div className="text-center sm:text-left space-y-4 px-4">
+                      <h3 className="text-2xl font-medium">
+                        {portfolioItem.title}
+                      </h3>
+                      <p className="font-light">{portfolioItem.content} </p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <img
+            src="/portfolio-image.png"
+            className="sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl"
+            alt=""
+          />
+        </motion.div>
       </div>
       <ul className="xl:hidden flex flex-col  gap-12 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl">
         {portfolioData.map((portfolioItem) => {

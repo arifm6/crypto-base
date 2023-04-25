@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React, { SyntheticEvent, useState } from "react";
 import { HiBars3 } from "react-icons/hi2";
-import { BsGlobe } from "react-icons/bs";
 import MobileMenu from "./MobileMenu";
 import NavbarDropdown from "./NavbarDropdown";
 import LearnDropdown from "./LearnDropdown";
@@ -25,9 +24,9 @@ export default function Navbar({}: Props) {
     }
   }
   return (
-    <div className="sticky top-0 bg-base-100 z-[999999]">
+    <div className="sticky top-0 bg-base-100 z-[999999] ">
       <MobileMenu isOpen={mobileMenuOpen} setIsOpen={setMobileMenuOpen} />
-      <div className="relative py-4 xl:py-0 px-8 sm:px-16 border-b-[0.5px] ">
+      <div className="relative py-5 sm:py-4 xl:py-0 px-8 sm:px-16 border-b-[0.5px] ">
         <div className="flex justify-between items-center max-w-7xl mx-auto">
           <Link href={"/"} className="flex items-center space-x-1">
             <img
@@ -37,6 +36,7 @@ export default function Navbar({}: Props) {
             />
             <h1 className="text-xl font-medium">CryptoBase.com</h1>
           </Link>
+
           <div className="flex gap-10 items-center">
             <nav className="hidden xl:flex items-center">
               <ul className="flex items-center ">
