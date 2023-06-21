@@ -23,6 +23,12 @@ export default function Price({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-3xl ml-4 md:ml-0">
+          Cryptocurrency Prices by Market Cap
+        </h1>
+      </div>
+
       {<CryptoTable cryptoData={cryptoData} setCryptoData={setCryptoData} />}
     </div>
   );

@@ -4,7 +4,6 @@ import {
   TiArrowSortedDown,
   TiArrowUnsorted,
 } from "react-icons/ti";
-import { IoIosStar } from "react-icons/io";
 import CryptoTablePagination from "./CryptoTablePagination";
 import {
   cryptoNumberFormatter,
@@ -52,7 +51,6 @@ export default function CryptoTable({ cryptoData, setCryptoData }: Props) {
   return (
     <>
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl ml-4 md:ml-0">Today's Cryptocurrency Prices</h1>
         <div className="overflow-x-auto">
           <table className="table w-full table-zebra ">
             <thead>
@@ -103,7 +101,7 @@ export default function CryptoTable({ cryptoData, setCryptoData }: Props) {
                       {coin.name}
                     </td>
                     <td>${roundCryptoPrice(parseFloat(coin.priceUsd))}</td>
-                    <td className="">
+                    <td>
                       <img
                         src={`https://graphsv2.coinpaprika.com/currency/chart/${coin.symbol}-${coin.id}/7d/chart.svg`}
                         alt={`Graph of ${coin.name} from the last seven days`}
